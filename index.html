@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>清漪 · 初雪 · FIRST SNOW</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+SC:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="intro-cover" id="intro-cover">
+    <div class="intro-inner">
+      <div class="envelope intro-envelope" id="intro-envelope">
+        <div class="env-flap"></div>
+        <div class="env-letter">
+          <img src="克莱因蓝花瓣·深色.jpg" alt="信纸">
+          <div class="env-letter-cap">A LETTER FOR QINGYI</div>
+        </div>
+        <div class="env-pocket"></div>
+        <div class="env-seal">❄</div>
+        <div class="env-hint">轻触拆开信封</div>
+      </div>
+      <div class="intro-title">清漪 · FIRST SNOW</div>
+    </div>
+  </div>
+  <div class="bg-ambience"></div>
+  <div class="bg-gradient-overlay"></div>
+  <div class="frost-vignette"></div>
+  <canvas id="snow-canvas"></canvas>
+  <canvas id="snow-front"></canvas>
+  <canvas id="click-canvas"></canvas>
+
+  <div class="app-viewport">
+    <div class="side-watermark side-wm-left">SILENCE WORE A ROBE OF WHITE</div>
+    <div class="side-watermark side-wm-right">ECHOES OF THE FALLING SNOW</div>
+    <header class="top-header">
+      <div class="header-tag">
+        <span class="header-dot"></span>
+        <span>清漪 · 无常驻团</span>
+      </div>
+      <div class="header-right">
+        <button class="sound-toggle music-toggle" id="music-toggle" title="背景音乐开关（手机录音.mp3）" aria-label="背景音乐开关">
+          <svg viewBox="0 0 24 24">
+            <path d="M9 18V5l12-2v13"></path>
+            <circle cx="6" cy="18" r="3"></circle>
+            <circle cx="18" cy="16" r="3"></circle>
+          </svg>
+        </button>
+        <button class="sound-toggle" id="sound-toggle" title="风雪环境音开关" aria-label="风雪环境音开关">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3v18M12 6l-3-3M12 6l3-3M12 18l-3 3M12 18l3 3"></path>
+            <path d="M4 7.5l16 9M4 8.8l.4 4.3M4 8.8l4.2-.8M20 15.2l-.4-4.3M20 15.2l-4.2.8"></path>
+            <path d="M20 7.5l-16 9M20 8.8l-4.2-.8M20 8.8l.4 4.3M4 15.2l4.2.8M4 15.2l-.4-4.3"></path>
+          </svg>
+        </button>
+        <button class="sound-toggle layout-toggle" id="layout-toggle" title="横屏 / 竖屏布局切换" aria-label="横屏 / 竖屏布局切换">
+          <svg viewBox="0 0 24 24">
+            <rect class="lt-rect" x="4" y="2" width="16" height="20" rx="3"></rect>
+            <path class="lt-arrow" d="M9.5 12l5-3.5v7z"></path>
+          </svg>
+        </button>
+        <div class="header-quote">Desire always ends in ennui.</div>
+      </div>
+    </header>
+
+    <main class="slider-stage" id="slider-stage">
+      <!-- PAGE 0：主页 -->
+      <section class="page-slide active" data-index="0">
+        <div class="hero-visual">
+          <div class="hero-avatar-wrap">
+            <div class="hero-avatar-ring"></div>
+            <div class="avatar-orbit orbit-1">
+              <div class="orbit-butterfly">
+                <span class="orbit-flake">❄</span>
+              </div>
+            </div>
+            <div class="avatar-orbit orbit-2">
+              <div class="orbit-butterfly butterfly-delay">
+                <span class="orbit-flake">❄</span>
+              </div>
+            </div>
+            <div class="avatar-orbit orbit-3">
+              <div class="orbit-butterfly butterfly-small">
+                <span class="orbit-flake">❄</span>
+              </div>
+            </div>
+            <img src="头像.jpg" alt="头像" class="hero-avatar">
+          </div>
+          <h1 class="hero-title">清漪</h1>
+          <p class="hero-sub">FIRST SNOW · KLEIN BLUE</p>
+        </div>
+        <div class="glass-box motto-card snow-surface" data-snow-side="right">
+          “怀旧最危险的诱惑，在于它只精心陈列过去的欢愉，却悄然藏起了所有附带的代价。”
+          <span class="en-sub">IT DISPLAYS THE JOY AND HIDES THE PRICE.</span>
+        </div>
+        <div class="glass-box profile-card">
+          <div class="card-caption">PROFILE · 个人档案</div>
+          <div class="profile-meta">
+            19 岁 · 女 · le ｜ ISFP · 水瓶 ｜ 无常驻团
+          </div>
+          <div class="profile-details">
+            主风格：高恋日常虚 · 妹感小狗 · 温柔引导<br>
+            说明：风格主要因人而异
+          </div>
+        </div>
+        <div class="tags-row">
+          <span class="tag-badge"># 高恋</span>
+          <span class="tag-badge"># 妹感小狗</span>
+          <span class="tag-badge"># ISFP</span>
+        </div>
+      </section>
+
+      <!-- PAGE 1：风格与心绪 -->
+      <section class="page-slide" data-index="1">
+        <div class="section-head">
+          <h2>风格与心绪</h2>
+          <p>ONCE UPON A FIRST SNOW</p>
+        </div>
+        <div class="parallax-frame" id="parallax-card">
+          <div class="parallax-inner">
+            <img src="雪窗猫迹·横幅.jpg" alt="雪窗猫迹" class="parallax-banner">
+            <div class="parallax-shine" id="parallax-shine"></div>
+            <div class="parallax-overlay-text">
+              <span>ECHOES OF THE FALLING SNOW</span>
+            </div>
+          </div>
+        </div>
+        <div class="style-watermark-bg">SILENCE FALLS AS A GIFT</div>
+        <div class="glass-box tone-list snow-surface" data-snow-side="right">
+          <div class="tone-item">
+            <div class="tone-header">
+              <span class="tone-name">❄ 主调</span>
+              <span class="tone-tag">核心</span>
+            </div>
+            <div class="aura-meter">
+              <div class="aura-fill aura-warm"></div>
+            </div>
+            <div class="tone-chips">
+              <span class="tone-chip">高恋</span>
+              <span class="tone-chip">日常虚</span>
+              <span class="tone-chip">妹感小狗</span>
+              <span class="tone-chip">温柔引导</span>
+            </div>
+          </div>
+          <div class="tone-item">
+            <div class="tone-header">
+              <span class="tone-name">❄ 尾调</span>
+              <span class="tone-tag">余韵</span>
+            </div>
+            <div class="aura-meter">
+              <div class="aura-fill aura-cool"></div>
+            </div>
+            <div class="tone-chips">
+              <span class="tone-chip">温润</span>
+              <span class="tone-chip">怀旧</span>
+              <span class="tone-chip">辨析</span>
+            </div>
+          </div>
+          <div class="tone-item tone-highlight">
+            <div class="tone-header">
+              <span class="tone-name">❄ 心声</span>
+              <span class="tone-tag">信条</span>
+            </div>
+            <div class="tone-desc confession-text">
+              怀旧只陈列欢愉，代价被悄悄藏起。<br>
+              It displays the joy and hides the price.<br>
+              Desire always ends in ennui.
+            </div>
+          </div>
+          <div class="style-extra-quote">
+            <span class="quote-symbol">“</span>欲望总是以厌倦收场。<span class="quote-symbol">”</span>
+          </div>
+        </div>
+        <img src="克莱因蓝花瓣·深色.jpg" alt="装饰横幅" class="deco-strip">
+      </section>
+
+      <!-- PAGE 2：信封 · 自介 -->
+      <section class="page-slide" data-index="2">
+        <div class="section-head text-center">
+          <h2>信封</h2>
+          <p>THE SEALED LETTER</p>
+        </div>
+        <p class="journey-lead">
+          雪会替你把话轻轻埋住——拆开这封信，把你的自介写给我。
+        </p>
+
+        <div class="envelope-stage" id="envelope-stage">
+          <div class="envelope" id="envelope">
+            <div class="env-flap"></div>
+            <div class="env-letter">
+              <img src="克莱因蓝花瓣·深色.jpg" alt="信纸">
+              <div class="env-letter-cap">A LETTER FOR QINGYI</div>
+            </div>
+            <div class="env-pocket"></div>
+            <div class="env-seal">❄</div>
+            <div class="env-hint">轻触拆开信封</div>
+          </div>
+
+          <div class="journey-side">
+            <div class="glass-box meet-form" id="letter-form" style="display:none">
+              <div class="mf-title">₊˚ 在见面之前 还请你写下这些 ʚ˚</div>
+
+              <div class="mf-group">
+                <div class="mf-label">风格喜好（可多选）</div>
+                <div class="mf-chips" id="mf-styles">
+                  <span class="mf-chip">高恋</span>
+                  <span class="mf-chip">日常虚</span>
+                  <span class="mf-chip">妹感小狗</span>
+                  <span class="mf-chip">温柔引导</span>
+                </div>
+              </div>
+
+              <div class="mf-grid">
+                <label class="mf-field">称呼<input type="text" id="mf-call" placeholder="怎么称呼你"></label>
+                <label class="mf-field">性别<input type="text" id="mf-gender" placeholder="你的性别"></label>
+                <label class="mf-field">喜好<input type="text" id="mf-like" placeholder="喜欢什么"></label>
+                <label class="mf-field">雷点<input type="text" id="mf-hate" placeholder="雷到什么"></label>
+              </div>
+
+              <div class="mf-group">
+                <div class="mf-label">想约的时长</div>
+                <div class="mf-chips mf-single" id="mf-length">
+                  <span class="mf-chip">30min</span>
+                  <span class="mf-chip">60min</span>
+                </div>
+              </div>
+
+              <div class="mf-group">
+                <div class="mf-label">是否新手板</div>
+                <div class="mf-chips mf-single" id="mf-newbie">
+                  <span class="mf-chip">是</span>
+                  <span class="mf-chip">否</span>
+                </div>
+              </div>
+
+              <label class="mf-field mf-note-field">备注<textarea id="mf-note" rows="2" placeholder="其他想对我说的话…"></textarea></label>
+
+              <button class="mf-done" id="mf-done">❄ 封 缄 这 封 信 ❄</button>
+            </div>
+
+            <div class="glass-box mf-summary" id="mf-summary" style="display:none">
+              <div class="mf-sum-head">❄ 你的自介信 · 已送达 ❄</div>
+              <div class="mf-sum-body" id="mf-sum-body"></div>
+              <div class="mf-sum-foot">DESIRE ALWAYS ENDS IN ENNUI · 清漪</div>
+              <div class="mf-sum-actions">
+                <button class="mf-btn" id="mf-edit">返回修改</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-footer">
+          <span class="footer-line"></span>
+          <span class="footer-text">BETWEEN WHITE AND KLEIN BLUE · 白与克莱因蓝之间</span>
+          <span class="footer-line"></span>
+        </div>
+      </section>
+
+      <!-- PAGE 3：须知 -->
+      <section class="page-slide" data-index="3">
+        <div class="section-head">
+          <h2>点单须知</h2>
+          <p>NOTICE BEFORE WE MEET</p>
+        </div>
+        <p class="notice-lead">
+          为了我们都有一场愉悦的相处体验，请在见面前后读完以下守则——尊重是互相的。
+        </p>
+        <img src="克莱因蓝花瓣·深色.jpg" alt="装饰横幅" class="deco-strip">
+        <div class="glass-box notice-rules">
+          <div class="rule-item">
+            <div class="rule-icon">01</div>
+            <div class="rule-content">
+              <div class="rule-label">关于点单</div>
+              <div class="rule-body">
+                婉拒匿名点单 / 黄豆抽象行为，否则点单视为送单。
+              </div>
+            </div>
+          </div>
+          <div class="rule-item">
+            <div class="rule-icon">02</div>
+            <div class="rule-content">
+              <div class="rule-label">关于期待</div>
+              <div class="rule-body">
+                我不是天赋型选手，请不要对我抱有太大期待；也请提前填好喜雷表，我不想因为失误让你失去对本次见面的耐心。
+              </div>
+            </div>
+          </div>
+          <div class="rule-item">
+            <div class="rule-icon">03</div>
+            <div class="rule-content">
+              <div class="rule-label">关于相处</div>
+              <div class="rule-body">
+                见面开始，便是你我之间关系的开始。请勿提及与本次相处无关或涉三的内容，出戏尬场概不负责。
+              </div>
+            </div>
+          </div>
+          <div class="rule-item">
+            <div class="rule-icon">04</div>
+            <div class="rule-content">
+              <div class="rule-label">关于时间</div>
+              <div class="rule-body">
+                你有一定的时间决定我的去留：30min 内 5 分钟可换人，60min 内 10 分钟可换人。禁止卡点换人，超时换人我会收取一定费用。
+              </div>
+            </div>
+          </div>
+          <div class="rule-item">
+            <div class="rule-icon">05</div>
+            <div class="rule-content">
+              <div class="rule-label">关于尊重</div>
+              <div class="rule-body">
+                婉拒恶搞行为 / 披马甲一直挑刺 / 单内录屏截图。称呼我为 清漪，尊重是互相的。
+              </div>
+            </div>
+          </div>
+          <div class="safe-word-card">
+            <div class="safe-word-content">深陷其中，甘之如饴</div>
+          </div>
+          <div class="notice-bottom-en">
+            <span>NOSTALGIA DISPLAYS THE JOY AND HIDES THE PRICE · DESIRE ALWAYS ENDS IN ENNUI</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="scroll-hint" id="scroll-hint">
+      <span>SWIPE</span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+
+    <nav class="dock-nav snow-surface" data-snow-side="left">
+      <button class="dock-btn active" onclick="goToSlide(0)">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>主页</span>
+      </button>
+      <button class="dock-btn" onclick="goToSlide(1)">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+        <span>风格</span>
+      </button>
+      <button class="dock-btn" onclick="goToSlide(2)">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="2 6 12 13 22 6"></polyline></svg>
+        <span>信封</span>
+      </button>
+      <button class="dock-btn" onclick="goToSlide(3)">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        <span>须知</span>
+      </button>
+    </nav>
+  </div>
+
+  <audio id="bg-music" src="手机录音.mp3" loop preload="metadata"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
